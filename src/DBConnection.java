@@ -29,6 +29,7 @@ public class DBConnection {
     }
 
     // this function to close the connection
+    // please note that is "static" to call it when we need it, an example I think to call it after user press exit
     public static void closeConnection() {
 
         try{
