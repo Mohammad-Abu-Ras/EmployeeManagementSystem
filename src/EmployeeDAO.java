@@ -131,7 +131,10 @@ public class EmployeeDAO {
     }
 
 
-
+// delete employee by id:
+    public boolean deleteEmployee(int id){
+        return executeUpdate("DELETE FROM employees WHERE id = ?", new Object[]{id});
+    }
 
 
     //end class
