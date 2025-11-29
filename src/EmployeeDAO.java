@@ -136,22 +136,4 @@ public class EmployeeDAO {
         return executeUpdate("DELETE FROM employees WHERE id = ?", new Object[]{id});
     }
 
-
-    //end class
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-//
