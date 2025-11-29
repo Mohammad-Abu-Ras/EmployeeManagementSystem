@@ -113,6 +113,11 @@ public class EmployeeDAO {
         return executeUpdate(sql, params);
     }
 
+    // get all employees method
+    public List<Employee> getAllEmployees(){
+        return  executeQueryList("SELECT * FROM employees",null);
+}
+
 
 
 
