@@ -2,6 +2,7 @@ public class EmployeeManagementSystem {
 
     public void startProgram(){
 
+        // we will update this:
        /* Employee em1 = new Employee();
 
         EnumOperations choice;
