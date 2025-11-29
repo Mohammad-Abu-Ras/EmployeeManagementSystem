@@ -3,7 +3,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+
 
 public class EmployeeDAO {
 
@@ -102,6 +105,13 @@ public class EmployeeDAO {
     }
 
 
+  // add employee method
+    public boolean addEmployee(Employee e) {
+        String sql = "INSERT INFO (name,email,department,salary,joining_date) VALUES (?,?,?,?,?)";
+        Object[] params = {e.name(),e.email(),e.department(),e.salary(), e.joiningDate()};
+
+        return executeUpdate(sql, params);
+    }
 
 
 
