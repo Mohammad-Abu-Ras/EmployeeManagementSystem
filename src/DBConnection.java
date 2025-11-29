@@ -28,5 +28,18 @@ public class DBConnection {
 
     }
 
+    // this function to close the connection
+    public static void closeConnection() {
+
+        try{
+            if (connection != null && connection.isClosed()) {
+                connection.close();
+                System.out.println("data base connection closed");
+            }
+        } catch (SQLException e){
+            System.out.println("could not close connection");
+        }
+    }
+
 
 }
