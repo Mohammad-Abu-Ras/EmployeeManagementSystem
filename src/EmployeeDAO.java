@@ -13,7 +13,16 @@ public class EmployeeDAO {
 
     // we need this method to  avoid repeating stmt.setXxx(...) in every CRUD method ,and makes DAO dynamic:
     // any sql with any number of parameters works also keeps code clean dont repeat yourself and prevents boilerplate.
+// Object[] is an array
 
+    // an example:
+    /*
+    * if
+    * parameters was = Ahmad, ahmad@gmail.com, "IT infra", 1000 : it becomes:
+    * st.setObject(1,"Ahmad")
+     * st.setObject(2,"ahmad@gmail.com")
+     * and so on ...
+    * */
     private void applyParameter(PreparedStatement st, Object[] parameters) throws SQLException {
         if (parameters != null) {
             return;
