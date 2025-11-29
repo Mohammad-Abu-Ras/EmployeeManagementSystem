@@ -56,11 +56,13 @@ public class EmployeeManagementSystem {
             System.out.println("The employee has been successfully added.");
         else
             inputOutput.printErrorMessage("Failed to add the employee.");
-
-
     }
 
-
+    // view all method
+    private void viewAllEmployees() {
+        inputOutput.printScreens("Employees List");
+        inputOutput.printTable(dao.getAllEmployees());
+    }
 
 
 
