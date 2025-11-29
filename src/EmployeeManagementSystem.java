@@ -111,10 +111,21 @@ public class EmployeeManagementSystem {
         else
             inputOutput.printErrorMessage("Failed to update the employee.");
 
-
-
-
     }
+
+    private void deleteEmployee(){
+        inputOutput.printScreens("Delete Employee");
+        System.out.println("Enter ID");
+        int id = scanner.nextInt();
+
+        if(dao.deleteEmployee(id)){
+            inputOutput.printSuccessMessage("Employee has been successfully deleted.");
+        }
+        else
+            inputOutput.printErrorMessage("Failed to delete the employee.");
+    }
+
+
 
 
 }
