@@ -20,7 +20,7 @@ public class EmployeeManagementSystem {
             switch (choice){
                 case ADD:
                     addEmployee();
-                /*    break;
+                   break;
                 case VIEW:
                     viewAllEmployees();
                     break;
@@ -34,7 +34,7 @@ public class EmployeeManagementSystem {
                     deleteEmployee();
                     break;
                 case EXIT:
-                    exit();*/
+                    exitProgram();
             }
         } while((choice!=EnumOperations.EXIT));
 
