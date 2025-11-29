@@ -1,4 +1,22 @@
+import java.util.Scanner;
+
 public class EmployeeManagementSystem {
+
+    private final EmployeeDAO dao = new EmployeeDAO();
+    private final InputOutputAndValidation inputOutput = new InputOutputAndValidation();
+    private final Scanner scanner = new Scanner(System.in);
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void startProgram(){
 
