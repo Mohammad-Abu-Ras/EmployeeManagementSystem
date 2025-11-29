@@ -13,7 +13,7 @@ public class EmployeeDAO {
 
     // we need this method to  avoid repeating stmt.setXxx(...) in every CRUD method ,and makes DAO dynamic:
     // any sql with any number of parameters works also keeps code clean dont repeat yourself and prevents boilerplate.
-// Object[] is an array
+   // Object[] is an array
 
     // an example:
     /*
@@ -23,7 +23,7 @@ public class EmployeeDAO {
      * st.setObject(2,"ahmad@gmail.com")
      * and so on ...
     * */
-    private void applyParameter(PreparedStatement st, Object[] parameters) throws SQLException {
+    private void applyParameters(PreparedStatement st, Object[] parameters) throws SQLException {
         if (parameters != null) {
             return;
         }
@@ -32,6 +32,22 @@ public class EmployeeDAO {
             st.setObject(i + 1, parameters[i]);
         }
     }
+
+    // insert, update , delete:
+    private boolean executeUpdate(String sql, Object[] parameters){
+        // here, using try with resources to ensure PreparedStatement will be closed automatically!
+        try(PreparedStatement st = creatStatement(sql)){
+            applyParameters(st, parameters);
+            // execute the update and return true if at least one row was affected
+            return st.executeUpdate() >0 ;
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+
+    }
+
 
 
 }
