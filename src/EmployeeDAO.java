@@ -1,6 +1,9 @@
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeDAO {
 
@@ -47,6 +50,26 @@ public class EmployeeDAO {
         }
 
     }
+
+    // execute select returns => list of <employee>
+
+    private List<Employee> executeQueryList(String sql, Object[] parameters) {
+        List<Employee> list = new ArrayList<>();
+
+        try (PreparedStatement st = creatStatement(sql)){
+            applyParameters(st,parameters);
+                try(ResultSet result = st.executeQuery()){
+                        while (result.next()){
+                            list.add()
+                        }
+                }
+        }
+        catch (SQLException e){
+            System.out.println("query error : " + "\n" +e.getMessage());
+        }
+        return list;
+    }
+
 
 
 
