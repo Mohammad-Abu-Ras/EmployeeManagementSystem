@@ -129,7 +129,7 @@ public class EmployeeManagementSystem {
         inputOutput.printScreens("Exit Program");
         DBConnection.closeConnection();
 
-        System.out.println("Thank you for using EmployeeManagementSystem! ");
+        System.out.println("Thank you for using Employee Management System! ");
     }
 
 
