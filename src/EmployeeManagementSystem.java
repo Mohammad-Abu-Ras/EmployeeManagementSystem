@@ -71,6 +71,50 @@ public class EmployeeManagementSystem {
         inputOutput.printEmployee(dao.getEmployeeById(id));
     }
 
+  // update employee using this method:
+    private void updateEmployee(){
+        inputOutput.printScreens("Update Employee");
+        System.out.println("Enter ID");
+        int id = scanner.nextInt();
+
+        Employee old = dao.getEmployeeById(id);
+
+        if (old == null){
+            inputOutput.printErrorMessage("Employee not found.");
+            return;
+        }
+
+        String newName = inputOutput.readStringFromUser("Enter new Name (" + old.name() + "): ");
+        if(newName.isBlank()){
+            newName = old.name();
+        }
+
+        String newEmail = inputOutput.readStringFromUser("Enter new Email (" + old.email() + "): ");
+        if(newEmail.isBlank()){
+            newEmail = old.email();
+        }
+
+        String newDepartment = inputOutput.readStringFromUser("Enter new Department (" + old.department() + "): ");
+        if(newDepartment.isBlank()){
+            newDepartment = old.department();
+        }
+
+        System.out.println("Enter new Salary (" + old.salary() + "): ");
+        String salaryInput = scanner.nextLine();
+        double newSalary = salaryInput.isBlank()? old.salary() : Double.parseDouble(salaryInput);
+
+        Employee update = new Employee(id,newName,newEmail,newDepartment,newSalary,old.joiningDate());
+
+        if(dao.updateEmployee(update)){
+            inputOutput.printSuccessMessage("Employee has been successfully updated.");
+        }
+        else
+            inputOutput.printErrorMessage("Failed to update the employee.");
+
+
+
+
+    }
 
 
 }
