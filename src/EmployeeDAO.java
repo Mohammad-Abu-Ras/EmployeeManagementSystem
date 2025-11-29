@@ -124,6 +124,12 @@ public class EmployeeDAO {
     }
 
 // update employee by id
+    public boolean updateEmployee(Employee e){
+        String sql = "UPDATE employees SET name=?, email=?, department=?, salary=? WHERE id=?";
+        Object[] parameters = {e.name(),e.email(),e.department(),e.salary(), e.id()};
+        return executeUpdate(sql,parameters);
+    }
+
 
 
 
