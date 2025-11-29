@@ -60,7 +60,7 @@ public class EmployeeDAO {
             applyParameters(st,parameters);
                 try(ResultSet result = st.executeQuery()){
                         while (result.next()){
-                            list.add()
+                            list.add(mapEmployee(result));
                         }
                 }
         }
@@ -69,6 +69,32 @@ public class EmployeeDAO {
         }
         return list;
     }
+
+
+    // map resultset row to the employee record
+    private Employee mapEmployee(ResultSet rs) throws SQLException {
+        return new Employee( rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("email"),
+                rs.getString("department"),
+                rs.getDouble("salary"),
+                rs.getDate("joining_date").toLocalDate()
+        );
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
