@@ -123,7 +123,7 @@ public class EmployeeDAO {
         return executeQueryOne("SELECT * FROM employees WHERE id = ?", new Object[]{id});
     }
 
-
+// update employee by id
 
 
 
