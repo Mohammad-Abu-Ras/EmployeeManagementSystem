@@ -125,7 +125,12 @@ public class EmployeeManagementSystem {
             inputOutput.printErrorMessage("Failed to delete the employee.");
     }
 
+    private void exitProgram(){
+        inputOutput.printScreens("Exit Program");
+        DBConnection.closeConnection();
 
+        System.out.println("Thank you for using EmployeeManagementSystem! ");
+    }
 
 
 }
