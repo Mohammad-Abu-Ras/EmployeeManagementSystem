@@ -118,6 +118,18 @@ public class EmployeeDAO {
         return  executeQueryList("SELECT * FROM employees",null);
 }
 
+// get employee by id :
+    public Employee getEmployeeById(int id){
+        return executeQueryOne("SELECT * FROM employees WHERE id = ?", new Object[]{id});
+    }
+
+
+
+
+
+
+    //end class
+    }
 
 
 
