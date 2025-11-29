@@ -42,7 +42,7 @@ public class EmployeeDAO {
             return st.executeUpdate() >0 ;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("data base write error : " + "\n" +e.getMessage());
             return false;
         }
 
