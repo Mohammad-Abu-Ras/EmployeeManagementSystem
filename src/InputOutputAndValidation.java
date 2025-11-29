@@ -14,10 +14,6 @@ public class InputOutputAndValidation {
         return userChoice;
     }
 
-    // default constructor
-    public InputOutputAndValidation() {
-    }
-
 
 //    --- note ---
 
