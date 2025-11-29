@@ -64,6 +64,13 @@ public class EmployeeManagementSystem {
         inputOutput.printTable(dao.getAllEmployees());
     }
 
+    //search about employee by id
+    private void searchEmployee(){
+        inputOutput.printScreens("Search Employee");
+        int id = scanner.nextInt();
+        inputOutput.printEmployee(dao.getEmployeeById(id));
+    }
+
 
 
 }
