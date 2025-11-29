@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class EmployeeManagementSystem {
@@ -6,54 +7,59 @@ public class EmployeeManagementSystem {
     private final InputOutputAndValidation inputOutput = new InputOutputAndValidation();
     private final Scanner scanner = new Scanner(System.in);
 
-
-
-
-
-
-
-
-
-
-
-
-
     public void startProgram(){
 
-        System.out.println();
-
-        // we will update this:
-       /* Employee em1 = new Employee();
 
         EnumOperations choice;
 
         do {
-            em1.printMenu();
-            em1.checkIfUserChoiceWithinTheRange((short) 1, (short) 6);
-            choice = (EnumOperations.values())[em1.getUserChoice()-1] ;
+            inputOutput.printMenu();
+            inputOutput.checkIfUserChoiceWithinTheRange((short) 1, (short) 6);
+            choice = (EnumOperations.values())[inputOutput.getUserChoice()-1] ;
 
             switch (choice){
                 case ADD:
-                    em1.addEmployee();
-                    break;
+                    addEmployee();
+                /*    break;
                 case VIEW:
-                    em1.viewAllEmployees();
+                    viewAllEmployees();
                     break;
                 case SEARCH:
-                    em1.searchEmployee();
+                    searchEmployee();
                     break;
                 case UPDATE:
-                    em1.updateEmployee();
+                    updateEmployee();
                     break;
                 case DELETE:
-                    em1.deleteEmployee();
+                    deleteEmployee();
                     break;
                 case EXIT:
-                    em1.exit();
+                    exit();*/
             }
-        } while((choice!=EnumOperations.EXIT));*/
+        } while((choice!=EnumOperations.EXIT));
 
     }
+
+// creating add Employee method to link between DB and user
+    private void addEmployee(){
+
+        inputOutput.printScreens("Add Employee");
+
+        String name = inputOutput.readStringFromUser("Enter Name: ");
+        String email = inputOutput.readStringFromUser("Enter Email: ");
+        String department = inputOutput.readStringFromUser("Enter Department: ");
+        double salary = inputOutput.readSalaryFromUser();
+
+        Employee Emp = new Employee(0,name,email,department,salary, LocalDate.now());
+
+        if(dao.addEmployee(Emp))
+            System.out.println("The employee has been successfully added.");
+        else
+            inputOutput.printErrorMessage("Failed to add the employee.");
+
+
+    }
+
 
 
 
