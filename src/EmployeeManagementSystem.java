@@ -1,4 +1,4 @@
-public class EmployeeManagementSystem extends Employee{
+public class EmployeeManagementSystem Employee{
 
     public void startProgram(){
 
