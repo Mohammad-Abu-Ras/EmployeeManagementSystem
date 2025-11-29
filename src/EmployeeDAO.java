@@ -9,7 +9,7 @@ public class EmployeeDAO {
 
     // here creating prepared statement for given sql :
 
-    private PreparedStatement creatStatement(String sql) throws SQLException {
+    private PreparedStatement createStatement(String sql) throws SQLException {
         return DBConnection.getConnection().prepareStatement(sql);
     }
 
@@ -39,7 +39,7 @@ public class EmployeeDAO {
     // insert, update , delete:
     private boolean executeUpdate(String sql, Object[] parameters){
         // here, using try with resources to ensure PreparedStatement will be closed automatically!
-        try(PreparedStatement st = creatStatement(sql)){
+        try(PreparedStatement st = createStatement(sql)){
             applyParameters(st, parameters);
             // execute the update and return true if at least one row was affected
             return st.executeUpdate() >0 ;
@@ -56,7 +56,7 @@ public class EmployeeDAO {
     private List<Employee> executeQueryList(String sql, Object[] parameters) {
         List<Employee> list = new ArrayList<>();
 
-        try (PreparedStatement st = creatStatement(sql)){
+        try (PreparedStatement st = createStatement(sql)){
             applyParameters(st,parameters);
                 try(ResultSet result = st.executeQuery()){
                         while (result.next()){
@@ -82,6 +82,24 @@ public class EmployeeDAO {
         );
     }
 
+    // execute select returns single employee
+    // -------------------------------------------------------------
+    private Employee executeQueryOne(String sql, Object[] params) {
+
+        try (PreparedStatement stmt = createStatement(sql)) {
+
+            applyParameters(stmt, params);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapEmployee(rs);
+                }
+            }
+
+        } catch (SQLException e) {
+            System.out.println("query error: " +"\n"+ e.getMessage());
+        }
+        return null;
+    }
 
 
 
