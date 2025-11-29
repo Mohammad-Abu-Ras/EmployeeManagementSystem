@@ -109,7 +109,6 @@ public class EmployeeDAO {
     public boolean addEmployee(Employee e) {
         String sql = "INSERT INFO (name,email,department,salary,joining_date) VALUES (?,?,?,?,?)";
         Object[] params = {e.name(),e.email(),e.department(),e.salary(), e.joiningDate()};
-
         return executeUpdate(sql, params);
     }
 
