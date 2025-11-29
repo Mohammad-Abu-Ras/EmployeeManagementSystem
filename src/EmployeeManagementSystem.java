@@ -2,6 +2,8 @@ public class EmployeeManagementSystem {
 
     public void startProgram(){
 
+        System.out.println();
+
         // we will update this:
        /* Employee em1 = new Employee();
 
