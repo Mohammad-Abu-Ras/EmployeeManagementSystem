@@ -1,8 +1,8 @@
-public class EmployeeManagementSystem Employee{
+public class EmployeeManagementSystem {
 
     public void startProgram(){
 
-        Employee em1 = new Employee();
+       /* Employee em1 = new Employee();
 
         EnumOperations choice;
 
@@ -30,7 +30,7 @@ public class EmployeeManagementSystem Employee{
                 case EXIT:
                     em1.exit();
             }
-        } while((choice!=EnumOperations.EXIT));
+        } while((choice!=EnumOperations.EXIT));*/
 
     }
 
