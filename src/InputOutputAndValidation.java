@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class InputOutputAndValidation {
@@ -65,6 +66,7 @@ public class InputOutputAndValidation {
     public String readStringFromUser(String message) {
 
         System.out.print(message);
+        input.nextLine();
         return input.nextLine();
     }
 
@@ -89,6 +91,48 @@ public class InputOutputAndValidation {
 
     }
 
+    public void printSuccessMessage(String message) {
+        System.out.println(message);
+    }
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void printEmployee(Employee employee) {
+        if (employee == null) {
+            printErrorMessage("Employee is not found!");
+            return;
+        }
+        System.out.println("ID: " + employee.id());
+        System.out.println("Name: " + employee.name());
+        System.out.println("Email: " + employee.email());
+        System.out.println("Department: "+employee.department());
+        System.out.println("Salary: "+ employee.salary());
+        System.out.println("Joining date: " + employee.joiningDate());
+
+    }
+
+    public void printTable(List<Employee> list) {
+        if(list.isEmpty()) {
+            printErrorMessage("No employees found!");
+            return;
+        }
+        System.out.println("------------------------------------------------------------------------");
+        System.out.printf("%-5s %-20s %-25s %-15s %-10s %-12s\n","ID", "Name", "Email", "Department", "Salary", "Join Date");
+        System.out.println("------------------------------------------------------------------------");
+
+        for (Employee e : list) {
+            System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",e.id(), e.name(), e.email(), e.department(), e.salary(), e.joiningDate());
+        }
+
+        System.out.println("------------------------------------------------------------------------");
+    }
+
+
+
+
+
+    //end
 }
 
 
