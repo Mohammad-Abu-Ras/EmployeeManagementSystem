@@ -16,9 +16,8 @@ public class InputOutputAndValidation {
     }
 
 
-//    --- note ---
-
     // I create this Function To notify the User that His choice are wrong! // to validate user choice
+    // based on the project, the user choice must be between 1 and 6
     public void checkIfUserChoiceWithinTheRange(short min, short max) {
         this.min = min;
         this.max = max;
@@ -66,13 +65,12 @@ public class InputOutputAndValidation {
     public String readStringFromUser(String message) {
 
         System.out.print(message);
-        input.nextLine();
         return input.nextLine();
     }
 
     // this method to read an amount of money (double) and validate it using handling exception
     public double readSalaryFromUser() {
-        System.out.print("Please enter Salary? ");
+        System.out.print("Please Enter Salary? ");
         while (true) {
             try {
                 return input.nextDouble();
@@ -91,27 +89,34 @@ public class InputOutputAndValidation {
 
     }
 
+    // dynamic success message:
     public void printSuccessMessage(String message) {
-        System.out.println(message);
+        System.out.println("Success Operation!  " + message);
     }
+    // dynamic Failed message:
     public void printErrorMessage(String message) {
-        System.out.println(message);
+        System.out.println( "Failed Operation!" + message);
     }
 
+
+    // this method to print a single record :
     public void printEmployee(Employee employee) {
+
+        // this is if the record is not exist
         if (employee == null) {
             printErrorMessage("Employee is not found!");
             return;
         }
+        // if the record not null, it will arrive here
         System.out.println("ID: " + employee.id());
         System.out.println("Name: " + employee.name());
         System.out.println("Email: " + employee.email());
         System.out.println("Department: "+employee.department());
         System.out.println("Salary: "+ employee.salary());
         System.out.println("Joining date: " + employee.joiningDate());
-
     }
 
+    // this method to print all employees in the system:
     public void printTable(List<Employee> list) {
         if(list.isEmpty()) {
             printErrorMessage("No employees found!");
@@ -124,7 +129,6 @@ public class InputOutputAndValidation {
         for (Employee e : list) {
             System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",e.id(), e.name(), e.email(), e.department(), e.salary(), e.joiningDate());
         }
-
         System.out.println("------------------------------------------------------------------------");
     }
 
