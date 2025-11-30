@@ -6,9 +6,10 @@ import java.sql.SQLException;
 // DBConnection class follows singleton class design patterns
 public class DBConnection {
 
-    private static final String username = "";
-    private static final String password = "";
-    private static final String url = "";
+    // filling user and password and url, and make them private static final
+    private static final String user = "root";
+    private static final String password = "123456";
+    private static final String url = "jdbc:mysql://localhost:3306/employees";
 
     // singleton instance
     private static Connection connection;
@@ -22,7 +23,7 @@ public class DBConnection {
     public static Connection getConnection() throws SQLException {
 
         if (connection == null || connection.isClosed()) {
-            connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection(url, user, password);
         }
         return connection;
 
