@@ -9,7 +9,7 @@ public class DBConnection {
     // filling user and password and url, and make them private static final
     private static final String user = "root";
     private static final String password = "123456";
-    private static final String url = "jdbc:mysql://localhost:3306/employees";
+    private static final String url = "jdbc:mysql://localhost:3306/company_db";
 
     // singleton instance
     private static Connection connection;
