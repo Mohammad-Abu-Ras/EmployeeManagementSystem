@@ -14,7 +14,8 @@ public class DBConnection {
     // singleton instance
     private static Connection connection;
 
-    // crating private constructor to..
+    // creating private constructor to prevent instantiation from outside the class,
+    // ensuring that this class cannot be created using 'new' and enforcing the Singleton pattern
     private DBConnection() {
 
     }
