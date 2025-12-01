@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -7,7 +8,7 @@ public class EmployeeManagementSystem {
     private final InputOutputAndValidation inputOutput = new InputOutputAndValidation();
     private final Scanner scanner = new Scanner(System.in);
 
-    public void startProgram(){
+    public void startProgram() throws SQLException {
 
 
         EnumOperations choice;
@@ -41,7 +42,7 @@ public class EmployeeManagementSystem {
     }
 
 // creating add Employee method to link between DB and user
-    private void addEmployee(){
+    private void addEmployee() throws SQLException {
 
         inputOutput.printScreens("Add Employee");
 
@@ -127,7 +128,7 @@ public class EmployeeManagementSystem {
 
     private void exitProgram(){
         inputOutput.printScreens("Exit Program");
-        DBConnection.closeConnection();
+        //DBConnection.closeConnection();
 
         System.out.println("Thank you for using Employee Management System! ");
     }

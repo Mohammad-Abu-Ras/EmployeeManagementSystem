@@ -35,6 +35,7 @@ public class InputOutputAndValidation {
         while (true) {
             try {
                 this.userChoice = input.nextShort();
+                input.nextLine();
                 break;
 
             } catch (InputMismatchException e) {
