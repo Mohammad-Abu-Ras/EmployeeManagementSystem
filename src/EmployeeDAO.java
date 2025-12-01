@@ -21,9 +21,9 @@ public class EmployeeDAO {
             statement.setDouble(4, employee.salary());
             statement.setDate(5, Date.valueOf(employee.joiningDate()));
 
-      //executing the insert statement and checking if rows were affected or not:
+            //executing the insert statement and checking if rows were affected or not:
             int rows = statement.executeUpdate();
-      //return true if insert was successful
+            //return true if insert was successful
             return rows > 0;
 
         } catch (SQLException e) {
@@ -41,8 +41,8 @@ public class EmployeeDAO {
         String sql = sqlGetAllQuery("employees");
 
         // since we used three resources in this method, we have to ensures these resources are closed automatically by separating them by ";"
-        try(Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet result = statement.executeQuery()) {
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet result = statement.executeQuery()) {
 
             // loop through the result set and convert each row into an Employee object
             while (result.next()) {
@@ -54,6 +54,24 @@ public class EmployeeDAO {
             System.out.println("Failed to fetch employees: " + e.getMessage());
         }
         return list;
+    }
+
+    //search employee by id
+    public Employee getEmployeeById(int id) {
+
+        String sql = sqlGetByIdQuery("employees");
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setInt(1, id);
+            try (ResultSet result = statement.executeQuery()) {
+                if (result.next()) {
+                    return mapEmployee(result);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("failed to search employee: " + e.getMessage());
+        }
+        return null;
     }
 
 
@@ -71,7 +89,6 @@ public class EmployeeDAO {
     }
 
 
-
     private String sqlAddQuery(String nameOfTable) {
         return "INSERT INTO " + nameOfTable + " employees (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
     }
@@ -80,9 +97,9 @@ public class EmployeeDAO {
         return "SELECT * FROM " + nameOfTable;
     }
 
-
-
-
+    private String sqlGetByIdQuery(String nameOfTable) {
+        return "SELECT * FROM " + nameOfTable + " WHERE id=?";
+    }
 
 
 }
