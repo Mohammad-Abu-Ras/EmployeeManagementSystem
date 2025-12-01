@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class EmployeeDAO {
     // Add new employee to the database:
     public boolean addEmployee(Employee employee) {
 
-        // sql query loaded from separate method for cleaner code and reusability
+        //sql query loaded from separate method for cleaner code and reusability
         String sql = sqlAddQuery("employees");
 
         // try with resources ensures the connection and prepared statement are closed automatically:
@@ -78,7 +77,7 @@ public class EmployeeDAO {
     // update employee
     public boolean updateEmployee(Employee employee) {
         String sql = sqlUpdateQuery("employees");
-        try (Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, employee.name());
             statement.setString(2, employee.email());
             statement.setString(3, employee.department());
@@ -87,7 +86,7 @@ public class EmployeeDAO {
 
             return statement.executeUpdate() > 0;
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("failed to update employee: " + e.getMessage());
             return false;
         }
@@ -97,8 +96,7 @@ public class EmployeeDAO {
     public boolean deleteEmployee(int id) {
 
         String sql = sqlDeleteQuery("employees");
-
-        try (Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql)){
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, id);
             return statement.executeUpdate() > 0;
@@ -125,7 +123,7 @@ public class EmployeeDAO {
 
 
     private String sqlAddQuery(String nameOfTable) {
-        return "INSERT INTO " + nameOfTable + " employees (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
+        return "INSERT INTO " + nameOfTable + " (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
     }
 
     private String sqlGetAllQuery(String nameOfTable) {
@@ -135,13 +133,14 @@ public class EmployeeDAO {
     private String sqlGetByIdQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable + " WHERE id=?";
     }
+
     private String sqlUpdateQuery(String nameOfTable) {
-        return "UPDATE "+ nameOfTable+" SET name=?, email=?, department=?, salary=? WHERE id=?";
-    }
-    private String sqlDeleteQuery(String nameOfTable) {
-        return "DELETE FROM "+nameOfTable+" WHERE id=?";
+        return "UPDATE " + nameOfTable + " SET name=?, email=?, department=?, salary=? WHERE id=?";
     }
 
+    private String sqlDeleteQuery(String nameOfTable) {
+        return "DELETE FROM " + nameOfTable + " WHERE id=?";
+    }
 
 
 }

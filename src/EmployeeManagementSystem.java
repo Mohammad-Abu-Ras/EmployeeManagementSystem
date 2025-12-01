@@ -16,12 +16,12 @@ public class EmployeeManagementSystem {
         do {
             inputOutput.printMenu();
             inputOutput.checkIfUserChoiceWithinTheRange((short) 1, (short) 6);
-            choice = (EnumOperations.values())[inputOutput.getUserChoice()-1] ;
+            choice = (EnumOperations.values())[inputOutput.getUserChoice() - 1];
 
-            switch (choice){
+            switch (choice) {
                 case ADD:
                     addEmployee();
-                   break;
+                    break;
                 case VIEW:
                     viewAllEmployees();
                     break;
@@ -37,11 +37,11 @@ public class EmployeeManagementSystem {
                 case EXIT:
                     exitProgram();
             }
-        } while((choice!=EnumOperations.EXIT));
+        } while ((choice != EnumOperations.EXIT));
 
     }
 
-// creating add Employee method to link between DB and user
+    // creating add Employee method to link between DB and user
     private void addEmployee() throws SQLException {
 
         inputOutput.printScreens("Add Employee");
@@ -51,9 +51,9 @@ public class EmployeeManagementSystem {
         String department = inputOutput.readStringFromUser("Enter Department: ");
         double salary = inputOutput.readSalaryFromUser();
 
-        Employee Emp = new Employee(0,name,email,department,salary, LocalDate.now());
+        Employee Emp = new Employee(0, name, email, department, salary, LocalDate.now());
 
-        if(dao.addEmployee(Emp))
+        if (dao.addEmployee(Emp))
             System.out.println("The employee has been successfully added.");
         else
             inputOutput.printErrorMessage("Failed to add the employee.");
@@ -66,67 +66,65 @@ public class EmployeeManagementSystem {
     }
 
     //search about employee by id
-    private void searchEmployee(){
+    private void searchEmployee() {
         inputOutput.printScreens("Search Employee");
         int id = scanner.nextInt();
         inputOutput.printEmployee(dao.getEmployeeById(id));
     }
 
-  // update employee using this method:
-    private void updateEmployee(){
+    // update employee using this method:
+    private void updateEmployee() {
         inputOutput.printScreens("Update Employee");
         System.out.println("Enter ID");
         int id = scanner.nextInt();
 
         Employee old = dao.getEmployeeById(id);
 
-        if (old == null){
+        if (old == null) {
             inputOutput.printErrorMessage("Employee not found.");
             return;
         }
 
         String newName = inputOutput.readStringFromUser("Enter new Name (" + old.name() + "): ");
-        if(newName.isBlank()){
+        if (newName.isBlank()) {
             newName = old.name();
         }
 
         String newEmail = inputOutput.readStringFromUser("Enter new Email (" + old.email() + "): ");
-        if(newEmail.isBlank()){
+        if (newEmail.isBlank()) {
             newEmail = old.email();
         }
 
         String newDepartment = inputOutput.readStringFromUser("Enter new Department (" + old.department() + "): ");
-        if(newDepartment.isBlank()){
+        if (newDepartment.isBlank()) {
             newDepartment = old.department();
         }
 
         System.out.println("Enter new Salary (" + old.salary() + "): ");
         String salaryInput = scanner.nextLine();
-        double newSalary = salaryInput.isBlank()? old.salary() : Double.parseDouble(salaryInput);
+        double newSalary = salaryInput.isBlank() ? old.salary() : Double.parseDouble(salaryInput);
 
-        Employee update = new Employee(id,newName,newEmail,newDepartment,newSalary,old.joiningDate());
+        Employee update = new Employee(id, newName, newEmail, newDepartment, newSalary, old.joiningDate());
 
-        if(dao.updateEmployee(update)){
+        if (dao.updateEmployee(update)) {
             inputOutput.printSuccessMessage("Employee has been successfully updated.");
-        }
-        else
+        } else
             inputOutput.printErrorMessage("Failed to update the employee.");
 
     }
 
-    private void deleteEmployee(){
+    private void deleteEmployee() {
         inputOutput.printScreens("Delete Employee");
         System.out.println("Enter ID");
         int id = scanner.nextInt();
 
-        if(dao.deleteEmployee(id)){
+        if (dao.deleteEmployee(id)) {
             inputOutput.printSuccessMessage("Employee has been successfully deleted.");
-        }
-        else
+        } else
             inputOutput.printErrorMessage("Failed to delete the employee.");
     }
 
-    private void exitProgram(){
+    private void exitProgram() {
         inputOutput.printScreens("Exit Program");
         //DBConnection.closeConnection();
 
