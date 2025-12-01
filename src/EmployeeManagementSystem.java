@@ -71,7 +71,7 @@ public class EmployeeManagementSystem {
 
     //search about employee by id
     private void searchEmployee() {
-        inputOutput.printScreens("Search Employee");
+        inputOutput.printScreens("Search Employee ");
         int id = scanner.nextInt();
         inputOutput.printEmployee(dao.getEmployeeById(id));
     }
