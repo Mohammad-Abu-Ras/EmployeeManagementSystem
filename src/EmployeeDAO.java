@@ -32,10 +32,58 @@ public class EmployeeDAO {
         }
     }
 
+    //  View all employees
+    public List<Employee> getAllEmployees() {
+
+        // I used List (data str) to store all retrieved employee
+        List<Employee> list = new ArrayList<>();
+        // this method cleaner code and reusability
+        String sql = sqlGetAllQuery("employees");
+
+        // since we used three resources in this method, we have to ensures these resources are closed automatically by separating them by ";"
+        try(Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery()) {
+
+            // loop through the result set and convert each row into an Employee object
+            while (result.next()) {
+                //mapEmployee() maps ResultSet data into an Employee object
+                list.add(mapEmployee(result));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Failed to fetch employees: " + e.getMessage());
+        }
+        return list;
+    }
+
+
+    // this method convert result set row to employee object
+    private Employee mapEmployee(ResultSet rs) throws SQLException {
+
+        return new Employee(
+                rs.getInt("id"),
+                rs.getString("name"),
+                rs.getString("email"),
+                rs.getString("department"),
+                rs.getDouble("salary"),
+                rs.getDate("joining_date").toLocalDate()
+        );
+    }
+
+
 
     private String sqlAddQuery(String nameOfTable) {
         return "INSERT INTO " + nameOfTable + " employees (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
     }
+
+    private String sqlGetAllQuery(String nameOfTable) {
+        return "SELECT * FROM " + nameOfTable;
+    }
+
+
+
+
+
 
 }
 
