@@ -77,10 +77,8 @@ public class EmployeeDAO {
 
     // update employee
     public boolean updateEmployee(Employee employee) {
-
         String sql = sqlUpdateQuery("employees");
         try (Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql)) {
-
             statement.setString(1, employee.name());
             statement.setString(2, employee.email());
             statement.setString(3, employee.department());
@@ -89,13 +87,27 @@ public class EmployeeDAO {
 
             return statement.executeUpdate() > 0;
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             System.out.println("failed to update employee: " + e.getMessage());
             return false;
         }
     }
 
+    // delete employee
+    public boolean deleteEmployee(int id) {
 
+        String sql = sqlDeleteQuery("employees");
+
+        try (Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql)){
+
+            statement.setInt(1, id);
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println(" Failed to delete employee: " + e.getMessage());
+            return false;
+        }
+    }
 
 
     // this method convert result set row to employee object
