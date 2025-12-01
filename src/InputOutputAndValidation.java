@@ -92,11 +92,11 @@ public class InputOutputAndValidation {
 
     // dynamic success message:
     public void printSuccessMessage(String message) {
-        System.out.println("Success Operation!  " + message);
+        System.out.println("\nSuccess Operation!"+ "\n" + message);
     }
     // dynamic Failed message:
     public void printErrorMessage(String message) {
-        System.out.println( "Failed Operation!" + message);
+        System.out.println( "\nFailed Operation!"+"\n"+ message);
     }
 
 

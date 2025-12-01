@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -51,12 +52,16 @@ public class EmployeeManagementSystem {
         String department = inputOutput.readStringFromUser("Enter Department: ");
         double salary = inputOutput.readSalaryFromUser();
 
-        Employee Emp = new Employee(0, name, email, department, salary, LocalDate.now());
+        // create object from Employee record, and sending id 0 as a value, since id is auto-increment by DB
+        Employee Emp = new Employee(0,name, email, department, salary, LocalDate.now());
 
-        if (dao.addEmployee(Emp))
-            System.out.println("The employee has been successfully added.");
-        else
-            inputOutput.printErrorMessage("Failed to add the employee.");
+        // in dao.addEmployee if the rows affected, it will return true, else it will return false
+             if (dao.addEmployee(Emp)){
+                 inputOutput.printSuccessMessage("The employee has been successfully added.");
+             }
+             else
+                 inputOutput.printErrorMessage("Failed to add employee. ");
+
     }
 
     // view all method

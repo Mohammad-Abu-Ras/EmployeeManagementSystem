@@ -8,7 +8,7 @@ public class EmployeeDAO {
     public boolean addEmployee(Employee employee) {
 
         //sql query loaded from separate method for cleaner code and reusability
-        String sql = sqlAddQuery("employees");
+        String sql = sqlAddQuery("employees1");
 
         // try with resources ensures the connection and prepared statement are closed automatically:
         try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -26,7 +26,7 @@ public class EmployeeDAO {
             return rows > 0;
 
         } catch (SQLException e) {
-            System.out.println(" Failed to add employee! " + e.getMessage());
+            System.out.println("\nError: " + e.getMessage());
             return false;
         }
     }
@@ -43,7 +43,7 @@ public class EmployeeDAO {
         try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet result = statement.executeQuery()) {
 
-            // loop through the result set and convert each row into an Employee object
+            // loop through the result set and convert each row into employee object
             while (result.next()) {
                 //mapEmployee() maps ResultSet data into an Employee object
                 list.add(mapEmployee(result));
@@ -59,7 +59,7 @@ public class EmployeeDAO {
     public Employee getEmployeeById(int id) {
 
         String sql = sqlGetByIdQuery("employees");
-        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)){
 
             statement.setInt(1, id);
             try (ResultSet result = statement.executeQuery()) {
@@ -86,7 +86,7 @@ public class EmployeeDAO {
 
             return statement.executeUpdate() > 0;
 
-        } catch (SQLException e) {
+         }catch (SQLException e) {
             System.out.println("failed to update employee: " + e.getMessage());
             return false;
         }
