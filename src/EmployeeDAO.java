@@ -75,6 +75,29 @@ public class EmployeeDAO {
     }
 
 
+    // update employee
+    public boolean updateEmployee(Employee employee) {
+
+        String sql = sqlUpdateQuery("employees");
+        try (Connection connection = DBConnection.getConnection();PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, employee.name());
+            statement.setString(2, employee.email());
+            statement.setString(3, employee.department());
+            statement.setDouble(4, employee.salary());
+            statement.setInt(5, employee.id());
+
+            return statement.executeUpdate() > 0;
+
+        } catch (SQLException e) {
+            System.out.println("failed to update employee: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
     // this method convert result set row to employee object
     private Employee mapEmployee(ResultSet rs) throws SQLException {
 
@@ -100,6 +123,13 @@ public class EmployeeDAO {
     private String sqlGetByIdQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable + " WHERE id=?";
     }
+    private String sqlUpdateQuery(String nameOfTable) {
+        return "UPDATE "+ nameOfTable+" SET name=?, email=?, department=?, salary=? WHERE id=?";
+    }
+    private String sqlDeleteQuery(String nameOfTable) {
+        return "DELETE FROM "+nameOfTable+" WHERE id=?";
+    }
+
 
 
 }
