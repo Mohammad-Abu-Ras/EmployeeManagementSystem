@@ -61,10 +61,9 @@ public class EmployeeManagementSystem {
              }
              else
                  inputOutput.printErrorMessage("Failed to add employee. ");
-
     }
 
-    // view all method
+    // view all employees method
     private void viewAllEmployees() {
         inputOutput.printScreens("Employees List");
         inputOutput.printTable(dao.getAllEmployees());
