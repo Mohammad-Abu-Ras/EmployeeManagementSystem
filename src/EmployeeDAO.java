@@ -48,7 +48,6 @@ public class EmployeeDAO {
                 //mapEmployee() maps ResultSet data into an Employee object
                 list.add(mapEmployee(result));
             }
-
         } catch (SQLException e) {
             System.out.println("Failed to fetch employees: " + e.getMessage());
         }
