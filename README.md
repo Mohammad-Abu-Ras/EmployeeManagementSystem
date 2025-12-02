@@ -55,5 +55,12 @@ CREATE TABLE employees (
 **Table**
 <img width="915" height="638" alt="5" src="https://github.com/user-attachments/assets/654aebda-a4e6-41cf-af57-5fcf0b97a311" />
 
+## 🔌 Configure MySQL Connection
 
+Update your MySQL username/password in:
+DBConnection.java
+
+private static final String user = "root";
+private static final String password = "123456";
+private static final String url = "jdbc:mysql://localhost:3306/company_db";
 
