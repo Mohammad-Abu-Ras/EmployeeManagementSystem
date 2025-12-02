@@ -29,6 +29,7 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 ---
 
 ## 📂 Project Structure
+![Project Structure](./images/1PS.png)
 
 
 ---
@@ -36,6 +37,8 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 ## MySQL Database Setup
 
 Run the following SQL script to create the database and table:
+
+![SQL script](./images/2CreateTable.png)
 
 ```sql
 CREATE DATABASE company_db;
@@ -53,12 +56,14 @@ CREATE TABLE employees (
 ```
 **Table**
 
+![SQL script](./images/3CreatedTable.png)
+
 ## 🔌 Configure MySQL Connection
 
 Update your MySQL username/password in:
 DBConnection.java
 
-```
+```java
 private static final String user = "root";
 private static final String password = "123456";
 private static final String url = "jdbc:mysql://localhost:3306/company_db";
@@ -72,4 +77,8 @@ private static final String url = "jdbc:mysql://localhost:3306/company_db";
 Add the JAR to classpath through IntelliJ IDEA:
 File → Project Structure → Modules → Dependencies → + → JAR
 
-Use the following screenshots as a guide to properly add the MySQL JDBC driver to your project:
+For **Windows** Use the following screenshots as a guide to properly add the MySQL JDBC driver to your project:
+
+
+
+
