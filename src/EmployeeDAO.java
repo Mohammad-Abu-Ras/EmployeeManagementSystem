@@ -59,7 +59,7 @@ public class EmployeeDAO {
 
         String sql = sqlGetByIdQuery("employees");
         // automatically close the connection and statement
-        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)){
+        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setInt(1, id);
             //execute the query and process the result
@@ -75,32 +75,48 @@ public class EmployeeDAO {
         return null;
     }
 
-
-    // update employee
+    // update employee method
+    // update existing employee's information in the data base.
+    // it returns true if the update was successful, otherwise returns false.
     public boolean updateEmployee(Employee employee) {
+
+        //UPDATE statement dynamically it just take the name of table
         String sql = sqlUpdateQuery("employees");
-        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            // setting the updated values in the prepared statement
             statement.setString(1, employee.name());
             statement.setString(2, employee.email());
             statement.setString(3, employee.department());
             statement.setDouble(4, employee.salary());
+            //id is used in the WHERE clause to update the correct employee
             statement.setInt(5, employee.id());
 
+            //// Execute the update query.
+            //if at least one row was affected, the update was successful.
             return statement.executeUpdate() > 0;
 
-         }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("failed to update employee: " + e.getMessage());
-            return false;
+            return false; // update failed
         }
     }
 
-    // delete employee
+
+    /*
+    *  delete an employee from the database by their ID.
+    *  returns true if the deletion was successful or false if no rows were affected or an error occurred.
+    * */
+    // delete employee method:
     public boolean deleteEmployee(int id) {
 
         String sql = sqlDeleteQuery("employees");
-        try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            statement.setInt(1, id);
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            // set the employee id in the WHERE clause
+            statement.setInt(1,id);
+            //execute the DELETE statement.
+            //if at least one row was removed, the deletion was successful
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -123,27 +139,30 @@ public class EmployeeDAO {
         );
     }
 
-
+// dynamic method to returns sql INSERT statement for adding new record into the given table:
     private String sqlAddQuery(String nameOfTable) {
         return "INSERT INTO " + nameOfTable + " (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
     }
-
+// dynamic method to returns sql SELECT statement that retrieves all rows from the given table.
     private String sqlGetAllQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable;
     }
-
+// dynamic method to returns sql SELECT statement that retrieves single row by ID.
     private String sqlGetByIdQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable + " WHERE id=?";
     }
 
+    //   this method returns sql UPDATE statement to modify an existing row identified by id
+    //only the name and email and department and salary fields are updated
+    // note: we dont need update id or joining date
     private String sqlUpdateQuery(String nameOfTable) {
         return "UPDATE " + nameOfTable + " SET name=?, email=?, department=?, salary=? WHERE id=?";
     }
 
+    // dynamic method returns sql DELETE statement to remove a row identified by id
     private String sqlDeleteQuery(String nameOfTable) {
         return "DELETE FROM " + nameOfTable + " WHERE id=?";
     }
-
 
 }
 
