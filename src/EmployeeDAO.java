@@ -58,17 +58,20 @@ public class EmployeeDAO {
     public Employee getEmployeeById(int id) {
 
         String sql = sqlGetByIdQuery("employees");
+        // automatically close the connection and statement
         try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)){
 
             statement.setInt(1, id);
+            //execute the query and process the result
             try (ResultSet result = statement.executeQuery()) {
-                if (result.next()) {
+                if (result.next()) { //If a matching employee exists convert the row into an employee object
                     return mapEmployee(result);
                 }
             }
         } catch (SQLException e) {
             System.out.println("failed to search employee: " + e.getMessage());
         }
+        // return null if no employee was found
         return null;
     }
 
