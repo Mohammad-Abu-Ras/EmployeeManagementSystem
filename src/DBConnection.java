@@ -2,11 +2,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 // DBConnection class follows singleton class design patterns
 public class DBConnection {
 
-    // filling user and password and url, and make them private static final
+    //filling user and password and url, and make them private static final
     private static final String user = "root";
     private static final String password = "123456";
     private static final String url = "jdbc:mysql://localhost:3306/company_db";
@@ -20,7 +19,7 @@ public class DBConnection {
 
     }
 
-    // This is (singleton patterns)
+    //this is (singleton patterns)
     //now we will create a public method to get ONE SINGLE connection:
     public static Connection getConnection() throws SQLException {
 
