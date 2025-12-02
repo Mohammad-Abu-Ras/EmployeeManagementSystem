@@ -88,6 +88,7 @@ For **Windows** Use the following screenshots as a guide to properly add the MyS
 
 3) go to **Project Structure**:
 
+![Project Structure](./images/3.png)
    
 
 
