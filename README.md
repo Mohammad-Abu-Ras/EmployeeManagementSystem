@@ -115,6 +115,7 @@ then Put a checkmark in the box:
 
 The application will start and show the console menu.
 
+![Output](./images/menu.png)
 
 
 
