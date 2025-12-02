@@ -99,9 +99,9 @@ and prees select folder then open JDBC Driver to compile it :
 
 ![JDBC Driver](./images/6.png)
 
-then Put a checkmark in the box:
+Then Put a checkmark in the box:
 
-![JDBC Driver](./images/7.png)
+![JDBC Driver](./images/8.png)
 
 
 ---
@@ -117,13 +117,54 @@ The application will start and show the console menu.
 
 ![Output](./images/menu.png)
 
+---
 
+## 🧱 Design Overview
+- Employee (record)
+- A Java 17 record used to model immutable employee data.
+- DBConnection (Singleton)
+- Ensures a single shared JDBC Connection throughout the application.
+- EmployeeDAO
+- Handles all CRUD operations using:
+- PreparedStatement
+- Try-with-resources
+- Clean mapping from ResultSet → Employee
+- EmployeeManagementSystem
+- Main controller that handles:
+- Menu loop
+- User input
+- Interaction with DAO
+- CRUD flows
+- InputOutputAndValidation
+    -- Contains:
+    - Menu printing
+    - Input validation
+    - Shields the system from invalid user input
+    - Formatted table printing
 
 ---
 
 
-   
-   
+## 🚀 Future Enhancements
+
+-- Add email format validation
+
+-- Add exporting employees to CSV
+
+-- Add pagination for large datasets
+
+-- Add sorting options (by salary, name, etc.)
+
+-- Convert to JavaFX UI version
+
+-- Migrate to Spring Boot + JPA version
 
 
+---
+
+## 📄 License
+
+This project is created for educational and interview practice purposes.
+Feel free to use or modify it.
+---
 
