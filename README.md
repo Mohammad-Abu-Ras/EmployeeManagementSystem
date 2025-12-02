@@ -84,11 +84,44 @@ For **Windows** Use the following screenshots as a guide to properly add the MyS
 
 2) Then go to **intellij** and paste it:
 
-![paste](./images/22.png)
+![intellij](./images/22.png)
 
 3) go to **Project Structure**:
 
 ![Project Structure](./images/33.png)
+
+4) Select **Modules** then (+) then 1.JARS
+
+![Modules + JARS ](./images/4.png)
+
+5) then from src select **MySQL JDBC Driver (mysql-connector-j 9.5.0)**
+and prees select folder then open JDBC Driver to compile it :
+
+![JDBC Driver](./images/6.png)
+
+then Put a checkmark in the box:
+
+![JDBC Driver](./images/7.png)
+
+
+---
+## ▶️ How to Run the Project
+
+1- Ensure MySQL Server is running
+2- Run the SQL script from above
+3- Open project in IntelliJ IDEA
+4- Add MySQL connector JAR to classpath
+5- Run the Main.java file
+
+The application will start and show the console menu.
+
+
+
+
+---
+
+
+   
    
 
 
