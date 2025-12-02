@@ -27,4 +27,6 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 ---
 
 ## 📂 Project Structure
+<img width="943" height="477" alt="6" src="https://github.com/user-attachments/assets/8d016b72-cc4d-43f5-b180-71fe91b8d0a6" />
+
 
