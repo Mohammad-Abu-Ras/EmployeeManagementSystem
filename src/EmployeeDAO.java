@@ -104,9 +104,9 @@ public class EmployeeDAO {
 
 
     /*
-    *  delete an employee from the database by their ID.
-    *  returns true if the deletion was successful or false if no rows were affected or an error occurred.
-    * */
+     *  delete an employee from the database by their ID.
+     *  returns true if the deletion was successful or false if no rows were affected or an error occurred.
+     * */
     // delete employee method:
     public boolean deleteEmployee(int id) {
 
@@ -114,7 +114,7 @@ public class EmployeeDAO {
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             // set the employee id in the WHERE clause
-            statement.setInt(1,id);
+            statement.setInt(1, id);
             //execute the DELETE statement.
             //if at least one row was removed, the deletion was successful
             return statement.executeUpdate() > 0;
@@ -139,15 +139,17 @@ public class EmployeeDAO {
         );
     }
 
-// dynamic method to returns sql INSERT statement for adding new record into the given table:
+    // dynamic method to returns sql INSERT statement for adding new record into the given table:
     private String sqlAddQuery(String nameOfTable) {
         return "INSERT INTO " + nameOfTable + " (name, email, department, salary, joining_date) VALUES (?, ?, ?, ?, ?)";
     }
-// dynamic method to returns sql SELECT statement that retrieves all rows from the given table.
+
+    // dynamic method to returns sql SELECT statement that retrieves all rows from the given table.
     private String sqlGetAllQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable;
     }
-// dynamic method to returns sql SELECT statement that retrieves single row by ID.
+
+    // dynamic method to returns sql SELECT statement that retrieves single row by ID.
     private String sqlGetByIdQuery(String nameOfTable) {
         return "SELECT * FROM " + nameOfTable + " WHERE id=?";
     }
