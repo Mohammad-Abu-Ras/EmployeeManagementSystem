@@ -120,7 +120,6 @@ public class EmployeeManagementSystem {
             inputOutput.printErrorMessage("Failed to update the employee.");
     }
 
-
     private void deleteEmployee() {
         inputOutput.printScreens("Delete Employee");
 
@@ -133,8 +132,6 @@ public class EmployeeManagementSystem {
 
     private void exitProgram() {
         inputOutput.printScreens("Exit Program");
-        //DBConnection.closeConnection();
-
         System.out.println("Thank you for using Employee Management System! ");
     }
 
