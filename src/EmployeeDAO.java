@@ -69,7 +69,7 @@ public class EmployeeDAO {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("failed to search employee: " + e.getMessage());
+            System.out.println("Failed to search employee: " + e.getMessage());
         }
         // return null if no employee was found
         return null;
@@ -97,7 +97,7 @@ public class EmployeeDAO {
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.out.println("failed to update employee: " + e.getMessage());
+            System.out.println("\nError: " + e.getMessage());
             return false; // update failed
         }
     }
@@ -120,7 +120,7 @@ public class EmployeeDAO {
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            System.out.println(" Failed to delete employee: " + e.getMessage());
+            System.out.println("\nError: " + e.getMessage());
             return false;
         }
     }
