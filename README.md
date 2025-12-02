@@ -147,17 +147,12 @@ The application will start and show the console menu.
 
 ## 🚀 Future Enhancements
 
--- Add email format validation
-
--- Add exporting employees to CSV
-
--- Add pagination for large datasets
-
--- Add sorting options (by salary, name, etc.)
-
--- Convert to JavaFX UI version
-
--- Migrate to Spring Boot + JPA version
+- Add email format validation
+- Add exporting employees to CSV
+- Add pagination for large datasets
+- Add sorting options (by salary, name, etc.)
+- Convert to JavaFX UI version
+- Migrate to Spring Boot + JPA version
 
 
 ---
