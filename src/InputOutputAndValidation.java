@@ -137,19 +137,18 @@ public class InputOutputAndValidation {
         System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
-    // reads a valid employee ID from the user.
+    // reads a valid employee ID from the user
     // valid id must be a positive short number (greater than 0)
-    // this method keeps asking until the user enters a correct value.
+    // this method keeps asking until the user enters a correct value
 
     public short readValidId(String message) {
         System.out.print(message);
-
         while (true) {
             try {
                 short id = input.nextShort();
                 input.nextLine();
 
-                if (id <= 0){
+                if (id <= 0) {
                     System.out.print("Error! ID must be greater than 0! Please Try again: ");
                     continue; // ask again
                 }
