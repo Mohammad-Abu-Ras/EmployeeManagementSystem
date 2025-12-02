@@ -78,7 +78,14 @@ Add the JAR to classpath through IntelliJ IDEA:
 File → Project Structure → Modules → Dependencies → + → JAR
 
 For **Windows** Use the following screenshots as a guide to properly add the MySQL JDBC driver to your project:
+1) Go to - **MySQL JDBC Driver (mysql-connector-j 9.5.0)**  and Copy the file :
+   
+![connector](./images/conn.png)
 
+2) then go to **intellij** and paste it:
+
+
+   
 
 
 
