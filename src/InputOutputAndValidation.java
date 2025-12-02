@@ -92,11 +92,12 @@ public class InputOutputAndValidation {
 
     // dynamic success message:
     public void printSuccessMessage(String message) {
-        System.out.println("\nSuccess Operation!"+ "\n" + message);
+        System.out.println("\nSuccess Operation!" + "\n" + message);
     }
+
     // dynamic Failed message:
     public void printErrorMessage(String message) {
-        System.out.println( "\nFailed Operation!"+"\n"+ message);
+        System.out.println("\nFailed Operation!" + "\n" + message);
     }
 
 
@@ -111,13 +112,13 @@ public class InputOutputAndValidation {
 
         printTableStructure();
 
-        System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",employee.id(), employee.name(), employee.email(), employee.department(), employee.salary(), employee.joiningDate());
+        System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n", employee.id(), employee.name(), employee.email(), employee.department(), employee.salary(), employee.joiningDate());
         System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
     // this method to print all employees in the system:
     public void printTable(List<Employee> list) {
-        if(list.isEmpty()) {
+        if (list.isEmpty()) {
             printErrorMessage("No employees found!");
             return;
         }
@@ -125,13 +126,14 @@ public class InputOutputAndValidation {
         printTableStructure();
 
         for (Employee e : list) {
-            System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",e.id(), e.name(), e.email(), e.department(), e.salary(), e.joiningDate());
-        }   System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
+            System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n", e.id(), e.name(), e.email(), e.department(), e.salary(), e.joiningDate());
+        }
+        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
-    private void printTableStructure(){
+    private void printTableStructure() {
         System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
-        System.out.printf("%-5s %-20s %-25s %-15s %-10s %-12s\n","ID", "Name", "Email", "Department", "Salary", "Join Date");
+        System.out.printf("%-5s %-20s %-25s %-15s %-10s %-12s\n", "ID", "Name", "Email", "Department", "Salary", "Join Date");
         System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
