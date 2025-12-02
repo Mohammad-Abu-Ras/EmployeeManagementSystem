@@ -16,11 +16,10 @@ public class DBConnection {
     // creating private constructor to prevent instantiation from outside the class,
     // ensuring that this class cannot be created using 'new' and enforcing the Singleton pattern
     private DBConnection() {
-
     }
 
     //this is (singleton patterns)
-    //now we will create a public method to get ONE SINGLE connection:
+    //now we will create a public method to get ONE SINGLE connection :
     public static Connection getConnection() throws SQLException {
 
         // it returns the single shard database connection instance, if the connection has not been created yet

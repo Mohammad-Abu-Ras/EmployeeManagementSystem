@@ -42,13 +42,10 @@ public class EmployeeManagementSystem {
             }
             //if choice = EXIT (option 6),the condition becomes false and the loop stops.
         } while ((choice != EnumOperations.EXIT));
-
-
     }
 
     // creating add Employee method to link between DB and user
     private void addEmployee() throws SQLException {
-
         inputOutput.printScreens("Add Employee");
 
         String name = inputOutput.readStringFromUser("Enter Name: ");
@@ -117,7 +114,6 @@ public class EmployeeManagementSystem {
 
         // creating new employee record with updated values
         Employee update = new Employee(id, newName, newEmail, newDepartment, newSalary, old.joiningDate());
-
         if (dao.updateEmployee(update)) {
             inputOutput.printSuccessMessage("Employee has been successfully updated.");
         } else
@@ -129,7 +125,6 @@ public class EmployeeManagementSystem {
         inputOutput.printScreens("Delete Employee");
 
         int id = inputOutput.readValidId("Please Enter Employee ID to Delete: ");
-
         if (dao.deleteEmployee(id)) {
             inputOutput.printSuccessMessage("Employee has been successfully deleted.");
         } else

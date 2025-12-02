@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeDAO {
-
     // Add new employee to the database:
     public boolean addEmployee(Employee employee) {
 
@@ -154,7 +153,7 @@ public class EmployeeDAO {
         return "SELECT * FROM " + nameOfTable + " WHERE id=?";
     }
 
-    //   this method returns sql UPDATE statement to modify an existing row identified by id
+    //this method returns sql UPDATE statement to modify an existing row identified by id
     //only the name and email and department and salary fields are updated
     // note: we dont need update id or joining date
     private String sqlUpdateQuery(String nameOfTable) {

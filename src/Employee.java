@@ -6,5 +6,5 @@ public record Employee(
         String email,
         String department,
         double salary,
-        LocalDate joiningDate) {
+        LocalDate joiningDate){
 }

@@ -6,6 +6,5 @@ public class Main {
         // this class contains all program logic and interaction with the user.
         EmployeeManagementSystem system = new EmployeeManagementSystem();
         system.startProgram();
-
     }
 }
