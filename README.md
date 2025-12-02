@@ -51,5 +51,6 @@ CREATE TABLE employees (
     joining_date DATE DEFAULT (CURRENT_DATE)
 );
 
+<img width="915" height="638" alt="5" src="https://github.com/user-attachments/assets/17efb801-3a94-4768-bda3-1951c48e327f" />
 
 
