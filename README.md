@@ -29,12 +29,11 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 ---
 
 ## 📂 Project Structure
-<img width="943" height="477" alt="6" src="https://github.com/user-attachments/assets/8d016b72-cc4d-43f5-b180-71fe91b8d0a6" />
 
 
 ---
 
-## 🗄️ MySQL Database Setup
+## MySQL Database Setup
 
 Run the following SQL script to create the database and table:
 
@@ -53,14 +52,24 @@ CREATE TABLE employees (
 
 ```
 **Table**
-<img width="915" height="638" alt="5" src="https://github.com/user-attachments/assets/654aebda-a4e6-41cf-af57-5fcf0b97a311" />
 
 ## 🔌 Configure MySQL Connection
 
 Update your MySQL username/password in:
 DBConnection.java
 
+```
 private static final String user = "root";
 private static final String password = "123456";
 private static final String url = "jdbc:mysql://localhost:3306/company_db";
+```
+## Adding MySQL JDBC Driver (mysql-connector-j)
 
+1) Download MySQL Connector JAR from: https://dev.mysql.com/downloads/connector/j/
+2) Place the jar file inside your project folder:
+3) EmployeeManagementSystemV1/src/mysql-connector-j-9.5.0.jar
+
+Add the JAR to classpath through IntelliJ IDEA:
+File → Project Structure → Modules → Dependencies → + → JAR
+
+Use the following screenshots as a guide to properly add the MySQL JDBC driver to your project:
