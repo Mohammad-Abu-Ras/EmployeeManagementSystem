@@ -82,8 +82,11 @@ For **Windows** Use the following screenshots as a guide to properly add the MyS
    
 ![connector](./images/conn.png)
 
-2) then go to **intellij** and paste it:
+2) Then go to **intellij** and paste it:
 
+![paste](./images/2.png)
+
+3) go to **Project Structure**:
 
    
 
