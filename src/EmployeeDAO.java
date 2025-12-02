@@ -8,7 +8,7 @@ public class EmployeeDAO {
     public boolean addEmployee(Employee employee) {
 
         //sql query loaded from separate method for cleaner code and reusability
-        String sql = sqlAddQuery("employees1");
+        String sql = sqlAddQuery("employees");
 
         // try with resources ensures the connection and prepared statement are closed automatically:
         try (Connection connection = DBConnection.getConnection(); PreparedStatement statement = connection.prepareStatement(sql)) {
