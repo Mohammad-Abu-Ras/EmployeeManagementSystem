@@ -32,3 +32,24 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 <img width="943" height="477" alt="6" src="https://github.com/user-attachments/assets/8d016b72-cc4d-43f5-b180-71fe91b8d0a6" />
 
 
+---
+
+## 🗄️ MySQL Database Setup
+
+Run the following SQL script to create the database and table:
+
+```sql
+CREATE DATABASE company_db;
+USE company_db;
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    department VARCHAR(50),
+    salary DOUBLE NOT NULL,
+    joining_date DATE DEFAULT (CURRENT_DATE)
+);
+
+
+
