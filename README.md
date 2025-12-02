@@ -84,11 +84,11 @@ For **Windows** Use the following screenshots as a guide to properly add the MyS
 
 2) Then go to **intellij** and paste it:
 
-![paste](./images/2.png)
+![paste](./images/22.png)
 
 3) go to **Project Structure**:
 
-![Project Structure](./images/3.png)
+![Project Structure](./images/33.png)
    
 
 
