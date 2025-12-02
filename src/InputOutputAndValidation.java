@@ -108,13 +108,11 @@ public class InputOutputAndValidation {
             printErrorMessage("Employee is not found!");
             return;
         }
-        // if the record not null, it will arrive here
-        System.out.println("ID: " + employee.id());
-        System.out.println("Name: " + employee.name());
-        System.out.println("Email: " + employee.email());
-        System.out.println("Department: "+employee.department());
-        System.out.println("Salary: "+ employee.salary());
-        System.out.println("Joining date: " + employee.joiningDate());
+
+        printTableStructure();
+
+        System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",employee.id(), employee.name(), employee.email(), employee.department(), employee.salary(), employee.joiningDate());
+        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
     // this method to print all employees in the system:
@@ -123,13 +121,18 @@ public class InputOutputAndValidation {
             printErrorMessage("No employees found!");
             return;
         }
-        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
-        System.out.printf("%-5s %-20s %-25s %-15s %-10s %-12s\n","ID", "Name", "Email", "Department", "Salary", "Join Date");
-        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
+
+        printTableStructure();
 
         for (Employee e : list) {
             System.out.printf("%-5d %-20s %-25s %-15s %-10.2f %-12s\n",e.id(), e.name(), e.email(), e.department(), e.salary(), e.joiningDate());
         }   System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
+    }
+
+    private void printTableStructure(){
+        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
+        System.out.printf("%-5s %-20s %-25s %-15s %-10s %-12s\n","ID", "Name", "Email", "Department", "Salary", "Join Date");
+        System.out.println("ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ");
     }
 
 }
