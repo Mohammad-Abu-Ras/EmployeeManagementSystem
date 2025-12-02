@@ -20,8 +20,10 @@ Implements full CRUD operations, input validation, DAO pattern, and a clean inte
 
 ## 🛠️ Tech Stack
 - **Java 17**
-- **MySQL 8**
-- **JDBC (mysql-connector-j)**
+- **MySQL Server 9.5.0**  
+  Download: https://cdn.mysql.com//Downloads/MySQL-9.5/mysql-9.5.0-winx64.msi
+- **MySQL JDBC Driver (mysql-connector-j 9.5.0)**  
+  Download: https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-j-9.5.0.zip
 - No frameworks (No Spring, No Hibernate, No Jakarta)
 
 ---
