@@ -70,17 +70,28 @@ public class InputOutputAndValidation {
     }
 
     // this method to read an amount of money (double) and validate it using handling exception
+    // and Salary must be greater 0
     public double readSalaryFromUser() {
-        System.out.print("Please Enter Salary? ");
+        System.out.print("Please Enter Salary: ");
         while (true) {
             try {
-                return input.nextDouble();
+                double salary = input.nextDouble();
+                input.nextLine(); // clear leftover newline
+
+                if (salary <= 0) {
+                    System.out.print("Error! Salary must be greater than 0, try again: ");
+                    continue;
+                }
+
+                return salary;
+
             } catch (InputMismatchException e) {
-                input.nextLine();
-                System.out.print("Error! Please enter the amount of salary ?");
+                input.nextLine(); // clear invalid input
+                System.out.print("Error! Please enter a valid numeric salary: ");
             }
         }
     }
+
 
     // this is method is dynamic, used to print the screen based on the choice of user
     public void printScreens(String Screen) {
@@ -146,7 +157,7 @@ public class InputOutputAndValidation {
         while (true) {
             try {
                 short id = input.nextShort();
-                input.nextLine();
+                input.nextLine(); //consume the leftover newline from nextInt() using nextLine()
 
                 if (id <= 0) {
                     System.out.print("Error! ID must be greater than 0! Please Try again: ");
@@ -161,7 +172,6 @@ public class InputOutputAndValidation {
             }
         }
     }
-
 
 }
 

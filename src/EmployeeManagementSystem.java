@@ -1,22 +1,24 @@
-import java.sql.Array;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class EmployeeManagementSystem {
 
+    // data access object responsible for all database operations(CRUD)
     private final EmployeeDAO dao = new EmployeeDAO();
+    // handles all input/output operations and validation logic
     private final InputOutputAndValidation inputOutput = new InputOutputAndValidation();
     private final Scanner scanner = new Scanner(System.in);
 
+    //starts the main program loop
     public void startProgram() throws SQLException {
 
-
         EnumOperations choice;
-
         do {
-            inputOutput.printMenu();
+            inputOutput.printMenu();//display the main menu
+            // ensures the user enters valid choice between 1 and 6
             inputOutput.checkIfUserChoiceWithinTheRange((short) 1, (short) 6);
+            //convert the numeric user choice into the corresponding enum value
             choice = (EnumOperations.values())[inputOutput.getUserChoice() - 1];
 
             switch (choice) {
@@ -38,7 +40,9 @@ public class EmployeeManagementSystem {
                 case EXIT:
                     exitProgram();
             }
+            //if choice = EXIT (option 6),the condition becomes false and the loop stops.
         } while ((choice != EnumOperations.EXIT));
+
 
     }
 
@@ -71,8 +75,7 @@ public class EmployeeManagementSystem {
     //search about employee by id
     private void searchEmployee() {
         inputOutput.printScreens("Search Employee ");
-        System.out.println("Please Enter Employee ID to Search: ");
-        int id = scanner.nextInt();
+        int id = inputOutput.readValidId("Please Enter Employee ID to Search: ");
         inputOutput.printEmployee(dao.getEmployeeById(id));
     }
 
@@ -81,14 +84,13 @@ public class EmployeeManagementSystem {
     private void updateEmployee() {
 
         inputOutput.printScreens("Update Employee");
-        System.out.print("Enter ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine(); //consume the leftover newline from nextInt() using nextLine()
+        int id = inputOutput.readValidId("Please Enter Employee ID to Update: ");
+
         //retrieve employee from database
         Employee old = dao.getEmployeeById(id);
         //if employee does not exist show error and stop process
         if (old == null) {
-            inputOutput.printErrorMessage("Employee not found.");
+            inputOutput.printErrorMessage("Employee is not found.");
             return;
         }
         // asking user for new info: [name, email,dep,salary]
@@ -118,15 +120,15 @@ public class EmployeeManagementSystem {
 
         if (dao.updateEmployee(update)) {
             inputOutput.printSuccessMessage("Employee has been successfully updated.");
-        }else
+        } else
             inputOutput.printErrorMessage("Failed to update the employee.");
     }
 
 
     private void deleteEmployee() {
         inputOutput.printScreens("Delete Employee");
-        System.out.println("Enter ID");
-        int id = scanner.nextInt();
+
+        int id = inputOutput.readValidId("Please Enter Employee ID to Delete: ");
 
         if (dao.deleteEmployee(id)) {
             inputOutput.printSuccessMessage("Employee has been successfully deleted.");
